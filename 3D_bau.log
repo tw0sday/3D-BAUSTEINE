@@ -1,0 +1,21 @@
+Line 30: Class MSComctlLib.ImageList of control IL1 was not a loaded control class.
+Line 243: Class MSComDlg.CommonDialog of control CmDialog1 was not a loaded control class.
+Line 250: Class MSComctlLib.Toolbar of control TB1 was not a loaded control class.
+Line 33: The property name _ExtentX in IL1 is invalid.
+Line 34: The property name _ExtentY in IL1 is invalid.
+Line 36: The property name ImageWidth in IL1 is invalid.
+Line 37: The property name ImageHeight in IL1 is invalid.
+Line 38: The property name MaskColor in IL1 is invalid.
+Line 39: The property name _Version in IL1 is invalid.
+Line 86: The property name Images in IL1 is invalid.
+Line 246: The property name _ExtentX in CmDialog1 is invalid.
+Line 247: The property name _ExtentY in CmDialog1 is invalid.
+Line 248: The property name _Version in CmDialog1 is invalid.
+Line 257: The property name _ExtentX in TB1 is invalid.
+Line 258: The property name _ExtentY in TB1 is invalid.
+Line 259: The property name ButtonWidth in TB1 is invalid.
+Line 260: The property name ButtonHeight in TB1 is invalid.
+Line 261: The property name AllowCustomize in TB1 is invalid.
+Line 262: The property name ImageList in TB1 is invalid.
+Line 263: The property name _Version in TB1 is invalid.
+Line 319: The property name Buttons in TB1 is invalid.

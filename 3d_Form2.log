@@ -1,0 +1,17 @@
+Line 17: Class MSComctlLib.Toolbar of control TB2 was not a loaded control class.
+Line 58: Class MSComctlLib.ImageList of control IL2 was not a loaded control class.
+Line 24: The property name _ExtentX in TB2 is invalid.
+Line 25: The property name _ExtentY in TB2 is invalid.
+Line 26: The property name ButtonWidth in TB2 is invalid.
+Line 27: The property name ButtonHeight in TB2 is invalid.
+Line 29: The property name ImageList in TB2 is invalid.
+Line 30: The property name _Version in TB2 is invalid.
+Line 57: The property name Buttons in TB2 is invalid.
+Line 61: The property name _ExtentX in IL2 is invalid.
+Line 62: The property name _ExtentY in IL2 is invalid.
+Line 64: The property name ImageWidth in IL2 is invalid.
+Line 65: The property name ImageHeight in IL2 is invalid.
+Line 66: The property name MaskColor in IL2 is invalid.
+Line 67: The property name UseMaskColor in IL2 is invalid.
+Line 68: The property name _Version in IL2 is invalid.
+Line 87: The property name Images in IL2 is invalid.
