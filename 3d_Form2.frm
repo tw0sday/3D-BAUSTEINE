@@ -1,17 +1,17 @@
 VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
-Begin VB.Form Form2 
-   BorderStyle     =   4  'Festes Werkzeugfenster
-   Caption         =   "3D-Körper"
-   ClientHeight    =   645
-   ClientLeft      =   45
-   ClientTop       =   285
-   ClientWidth     =   3540
+Begin VB.Form F2 
+   BorderStyle     =   5  'Änderbares Werkzeugfenster
+   Caption         =   "3D"
+   ClientHeight    =   14280
+   ClientLeft      =   60
+   ClientTop       =   300
+   ClientWidth     =   585
    LinkTopic       =   "Form2"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   645
-   ScaleWidth      =   3540
+   ScaleHeight     =   14280
+   ScaleWidth      =   585
    ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows-Standard
    Begin ComctlLib.Toolbar TB2 
@@ -20,8 +20,8 @@ Begin VB.Form Form2
       Left            =   0
       TabIndex        =   0
       Top             =   0
-      Width           =   3540
-      _ExtentX        =   6244
+      Width           =   585
+      _ExtentX        =   1032
       _ExtentY        =   1164
       ButtonWidth     =   1032
       ButtonHeight    =   1005
@@ -95,15 +95,15 @@ Begin VB.Form Form2
       EndProperty
    End
 End
-Attribute VB_Name = "Form2"
+Attribute VB_Name = "F2"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 '************************************************************************************************
-'           Programm: Form2 bewegliche Toolbar2 zu 3D_Baukasten     Version 1.0     6.1.2001
-'           Form2: ToolBar zum Auswählen der verschiedenen Körper(Kugel,Kegel,...)
-'           Besonderheit: Das Form2 bleibt immer an der Oberfläche sichtbar.
+'           Programm: Form F2 bewegliche Toolbar2 zu 3D_Baukasten     Version 1.0     6.1.2001
+'           F2: ToolBar zum Auswählen der verschiedenen Körper(Kugel,Kegel,...)
+'           Besonderheit: Das F2 bleibt immer an der Oberfläche sichtbar.
 '************************************************************************************************
 
 Private Declare Function SetWindowPos& Lib "user32" (ByVal hwnd&, ByVal WndInsertAfter&, ByVal x&, ByVal y&, ByVal cx&, ByVal cy&, ByVal wFlags&)
@@ -112,14 +112,14 @@ Private Const SWP_SHOWWINDOW = &H40
 Private Const HWND_TOPMOST = -1
 
 Private Sub Form_Resize()
-  SetWindowPos Form2.hwnd, HWND_TOPMOST, Left / Screen.TwipsPerPixelX, Top / Screen.TwipsPerPixelY, Width / Screen.TwipsPerPixelX, Height / Screen.TwipsPerPixelY, SWP_SHOWWINDOW
+  SetWindowPos F2.hwnd, HWND_TOPMOST, Left / Screen.TwipsPerPixelX, Top / Screen.TwipsPerPixelY, Width / Screen.TwipsPerPixelX, Height / Screen.TwipsPerPixelY, SWP_SHOWWINDOW
 End Sub
 
 '***         Auswahl der Körper und Rückgabe an das Form1           ***/
 '****************************************   E O F   **********************************************
 
 Private Sub TB2_ButtonClick(ByVal Button As ComctlLib.Button)
-   Itool2 = Button.Index              'Index global bekanntgeben
- Form1.cb1.Text = Button.Key        'Namen im Toolbar TB2 und ComboBox DB1 müssen übereinstimmen!!
- Call Form1.CB1_Click               'Aufruf der Combobox CB1 simulieren
+   Itool2 = Button.Index           'Index global bekanntgeben
+   F4.cb1.Text = Button.Key        'Namen im Toolbar TB2 und ComboBox CB1 müssen übereinstimmen!!
+ Call F4.CB1_Click                 'Aufruf der Combobox CB1 simulieren
 End Sub

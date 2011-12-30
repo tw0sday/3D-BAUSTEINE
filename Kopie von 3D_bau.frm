@@ -3,10 +3,10 @@ Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form Form1 
    BackColor       =   &H00C0C0C0&
    Caption         =   "3D-Baukasten"
-   ClientHeight    =   12555
+   ClientHeight    =   8535
    ClientLeft      =   0
    ClientTop       =   1725
-   ClientWidth     =   11925
+   ClientWidth     =   8310
    BeginProperty Font 
       Name            =   "MS Sans Serif"
       Size            =   8.25
@@ -21,9 +21,9 @@ Begin VB.Form Form1
    LinkTopic       =   "Form1"
    MousePointer    =   1  'Pfeil
    PaletteMode     =   1  'ZReihenfolge
-   ScaleHeight     =   837
+   ScaleHeight     =   569
    ScaleMode       =   3  'Pixel
-   ScaleWidth      =   795
+   ScaleWidth      =   554
    Begin ComctlLib.Toolbar TB1 
       Height          =   630
       Left            =   0
@@ -40,110 +40,123 @@ Begin VB.Form Form1
       BeginProperty Buttons {0713E452-850A-101B-AFC0-4210102A8DA7} 
          NumButtons      =   13
          BeginProperty Button1 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Position"
             Object.Tag             =   ""
             ImageIndex      =   1
          EndProperty
          BeginProperty Button2 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Körper einfügen"
             Object.Tag             =   ""
             ImageIndex      =   2
          EndProperty
          BeginProperty Button3 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Bearbeiten"
             Object.Tag             =   ""
             ImageIndex      =   3
          EndProperty
          BeginProperty Button4 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Farbe ändern"
             Object.Tag             =   ""
             ImageIndex      =   4
          EndProperty
          BeginProperty Button5 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Raytrace"
             Object.Tag             =   ""
             ImageIndex      =   5
          EndProperty
          BeginProperty Button6 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "3D-Zoom"
             Object.Tag             =   ""
             ImageIndex      =   6
          EndProperty
          BeginProperty Button7 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Ausgabe"
             Object.Tag             =   ""
             ImageIndex      =   7
          EndProperty
          BeginProperty Button8 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Beenden"
             Object.Tag             =   ""
             ImageIndex      =   8
          EndProperty
          BeginProperty Button9 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Dia-Show"
             Object.Tag             =   ""
             ImageIndex      =   9
          EndProperty
          BeginProperty Button10 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Beenden"
             Object.Tag             =   ""
          EndProperty
          BeginProperty Button11 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Bilder anzeigen"
             Object.Tag             =   ""
          EndProperty
          BeginProperty Button12 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Button13 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty
    End
    Begin VB.PictureBox xz 
       BackColor       =   &H00000000&
-      Height          =   5775
+      Height          =   3750
       Left            =   0
-      ScaleHeight     =   321.519
+      ScaleHeight     =   207.595
       ScaleMode       =   0  'Benutzer
-      ScaleWidth      =   328.27
+      ScaleWidth      =   207.595
       TabIndex        =   3
       Top             =   720
-      Width           =   5895
+      Width           =   3750
    End
    Begin VB.PictureBox d3 
       BackColor       =   &H00000000&
-      Height          =   5895
+      Height          =   3750
       Left            =   0
       MousePointer    =   1  'Pfeil
-      ScaleHeight     =   328.27
+      ScaleHeight     =   207.595
       ScaleMode       =   0  'Benutzer
-      ScaleWidth      =   328.27
+      ScaleWidth      =   207.595
       TabIndex        =   2
-      Top             =   6600
-      Width           =   5895
+      Top             =   4560
+      Width           =   3750
    End
    Begin VB.PictureBox yz 
       BackColor       =   &H00000000&
-      Height          =   5775
-      Left            =   6000
-      ScaleHeight     =   321.519
+      Height          =   3750
+      Left            =   3840
+      ScaleHeight     =   207.595
       ScaleMode       =   0  'Benutzer
-      ScaleWidth      =   328.27
+      ScaleWidth      =   207.595
       TabIndex        =   1
       Top             =   720
-      Width           =   5895
+      Width           =   3750
    End
    Begin VB.PictureBox xy 
       BackColor       =   &H00000000&
-      Height          =   5895
-      Left            =   6000
-      ScaleHeight     =   328.27
+      Height          =   3735
+      Left            =   3840
+      ScaleHeight     =   206.751
       ScaleMode       =   0  'Benutzer
-      ScaleWidth      =   328.27
+      ScaleWidth      =   206.751
       TabIndex        =   0
-      Top             =   6600
-      Width           =   5895
+      Top             =   4560
+      Width           =   3735
    End
    Begin VB.Timer Timer1 
       Interval        =   200
@@ -339,13 +352,17 @@ Private Sub Form_Load()             'Hauptfenster laden
    End With
  Next i
  
- 'Call ViewControl
+ Call ViewControl
  
  Call POV.Def_Pov                    'Standardwerte für Raytracer
  
  Call Def_3D
  
+ 'xz.Height = 0                      'Kreuzriss ausblenden
+ 'xz.Width = 0                       'nur in Version für GZ 3.Klasse
+ 
 End Sub ' ****************** End Form Load ***********************
+
 
 
 Private Sub Form_Unload(Cancel As Integer)
@@ -355,83 +372,46 @@ Private Sub Form_Unload(Cancel As Integer)
   Unload Me                         'Form1 Hauptfenster
 End Sub
 
-Private Sub Form_Resize()           'VORSICHT! Wird bereits vor Form_Load aufgerufen!!
-  ViewControl
-End Sub
+
 '**********************************************************************************************
 '                  D a r s t e l l u n g s - / A b l a u f v e r w a l t u n g
 '**********************************************************************************************
-Private Sub ViewControl()               'Automatische Grössenänderung
-Dim FH, FW, i   As Integer
-Dim k As Single
+Sub ViewControl()               'Automatische Grössenänderung
+Dim FH, FW, H, W, i As Integer
 
-FH = Form1.Height / Screen.TwipsPerPixelY - 100: FW = Form1.Width / Screen.TwipsPerPixelX
+H = Int(Form1.Height / 4): W = Int(Form1.Width / 4)
 
-If FH < FW Then F = FH Else F = FW
-
-If UBound(View) > 0 Then
-For i = 1 To UBound(View)                  'Views xy,yz,xz
+For i = 1 To UBound(View)          'Views xy,yz,xz,3d
  akti = i                           'Index des aktuellen Views im Array View
    With View(i)
+   Debug.Print "Viewcontrol"; H, W, .x0, .y0, .mx, .my
+
+    .pic.ScaleWidth = W
+    .pic.ScaleHeight = H
+    
+    .x0 = W / 2       'x0,y0 = Ursprung Mitte des Pictures
+    .y0 = H / 2
+    .mx = H / 20
+    .my = W / 20
+  
     Select Case i
-        Case 1: Set .pic = xy: .pic.Top = F / 2 + 45: .pic.Left = F / 2
-        Case 2: Set .pic = yz: .pic.Top = 45: .pic.Left = F / 2
-        Case 3: Set .pic = xz: .pic.Top = 45: .pic.Left = 0
-        Case 4: Set .pic = d3: .pic.Top = F / 2 + 45: .pic.Left = 0
+        Case 1: .name = "Grund": Set .pic = xy: .sy = 1: .twist = True ': .y0 = 0
+        Case 2: .name = "Auf": Set .pic = yz
+        Case 3: .name = "Kreuz": Set .pic = xz: .sx = -1
+        Case 4: .name = "3D": Set .pic = d3: .grid = False
         Case Else: .name = "unkno"
     End Select
-    .pic.Width = F / 2
-    .pic.Height = F / 2
-   
-     .x0 = F / 5
-     .y0 = F / 5
-    
-  
-   Debug.Print "Viewcontrol"; FH, FW, F, .x0, .y0, .mx, .my, k, Screen.TwipsPerPixelX, Screen.TwipsPerPixelY
-
-    
+    Debug.Print i, .name; .x0, .y0, .mx, .my, .sx, .sy, .twist, .grid 'Testausgabe
     If .grid Then Call grid(QBColor(0))               'Hintergrundraster erzeugen
    End With
  Next i
  
-End If
-End Sub
 
+End Sub
 '**********************************************************************************************
 '                             T o o l b a r - O p e r a t i o n e n
 '**********************************************************************************************
-Private Sub TB1_ButtonClick(ByVal Button As ComctlLib.Button) 'Toolbar1
 
-Dim i As Integer                            'Hilfsvariable
-
- TB1.Buttons(Itool).Value = tbrUnpressed    'MS-Bug1 alte Taste heben geht nicht!!
-                               '
- Itool = Button.Index                       'Index der gedrueckten Taste
- 
- 
-   Select Case Itool
-     Case 1:    F2.Hide                  'Körperauswahl ausblenden
-                View(1).cur = 1: View(2).cur = 1: View(3).cur = 1:
-     Case 2:    F2.Show                  'Körperauswahl einblenden
-                F4.SSTab1.Tab = 0
-                View(1).cur = 2: View(2).cur = 2: View(3).cur = 1:
-                                            'Cursorform ändern
-     Case 3:
-     Case 4:    'Call F4.BColor_Click
-     Case 5:    Call F4.RayTrace
-     Case 6:    Call Form1.Zoomed_d3
-     
-     Case 7:    'Call F4.BPOV_Comp_Click        'Exportdatei erstellen
-                'Call F4.BPov_Save_Click        'in Ausgabedatei schreiben
-
-     Case 8:   Form1.mnuFileExit_Click
-     Case 9:   F4.SSTab1.Tab = 3               'BilderRegister
-               F4.Def_Bilder
-   End Select
- Debug.Print "TB1 Taste: ", Itool
- Button.Value = IDDOWN                     'Taste gedrückt einrasten
-
-End Sub
 
 '**********************************************************************************************
 '                               M e n ü - O p e r a t i o n e n
@@ -645,11 +625,11 @@ End Sub
 '**********************************************************************************************
 
 Private Function x2p(ByVal x As Single, ByVal y As Single, Optional rel As Boolean) As R2_Point
-Dim h As Single                             'Umrechnung Koordinaten -> ScaleKoordinaten
+Dim H As Single                             'Umrechnung Koordinaten -> ScaleKoordinaten
   
   With View(akti)                           'Aktueller View
   If .twist Then                            'Koordinatenachsen vertauscht!
-    h = x: x = y: y = h                     '"Dreieckstausch"
+    H = x: x = y: y = H                     '"Dreieckstausch"
   End If
   If rel = False Then                       'Parameter = abolute Koordinaten!!
     .dx = .x0 + x * .mx * .sx               'aktuelle Pos. merken
@@ -779,7 +759,7 @@ Private Function snap(x As Single) As Single        'Snap to Grid
 End Function
 
 Private Function p2x(x As Single) As Single         'Picture to x-Koordinaten umrechnen
-Dim h As Single                                     'Hilfsvariable für Dreieckstausch
+Dim H As Single                                     'Hilfsvariable für Dreieckstausch
 
   With View(akti)
     p2x = snap(.sx * (x - .x0) / .mx)               'x = PicKoordinaten, x0 = Nullkoord
@@ -867,7 +847,7 @@ Private Sub Def_3D()                            'Standardeinstellungen 3d-View
 End Sub
 
 
-Sub d3_ZoomOut()
+Private Sub d3_ZoomOut()
 Dim i%
   d3.Cls: scal = 1 / 1.5                        'Faktor 1/1,5 verkleinern
     For i = 0 To objmax
@@ -876,7 +856,7 @@ Dim i%
     Next i
 End Sub
 
-Sub d3_ZoomIn()
+Private Sub d3_ZoomIn()
 Dim i%
   d3.Cls: scal = 1.5                             'Faktor 1/1,5 vergrößern
   For i = 0 To objmax
@@ -889,7 +869,7 @@ Sub D3_Resize()
     d3.ScaleTop = -d3.ScaleHeight \ 2           'Mitte des Pictures
     d3.ScaleLeft = -d3.ScaleWidth \ 2           '= Koordinatenursprung
     d3.Cls                                      'Picture "d3" löschen
-    For i = 1 To objmax
+    For i = 0 To objmax
      d3.ForeColor = obj(i).defcol               'Farbe des Objekts
      show_3D d3.hDC, CInt(UBound(D3obj(i).KO)), D3obj(i).KO(0), CInt(d3.ScaleWidth \ 2), CInt(d3.ScaleHeight \ 2)
     Next i
@@ -900,18 +880,15 @@ End Sub
 
 Sub Zoomed_d3()                         'D3 View auf vier Felder vergrößern bzw verkleinern
   If zoomed_View = 0 Then
-      d3.Top = 45: d3.Left = 0                  'fertig machen zum Zoomen !
-      d3.Height = Form1.Height / Screen.TwipsPerPixelY - 45 'max.vergrössern
-      d3.Width = Form1.Width / Screen.TwipsPerPixelX
-      xz.Height = 0                             'Kreuzriss ausblenden
-      xz.Width = 0
+      F2.Hide                                'Werkzeugleiste verstecken
+      d3.Top = 38: d3.Left = 44                 'fertig machen zum Zoomen !
+      d3.Height = 500: d3.Width = 500           'vergrössern
       zoomed_View = 4
   ElseIf zoomed_View = 4 Then                   'verkleinern
-      'F2.Show
-      'd3.Top = 60: d3.Left = 0
-      'd3.Height = 250: d3.Width = 250
+      F2.Show
+      d3.Top = 288: d3.Left = 44
+      d3.Height = 250: d3.Width = 250
       zoomed_View = 0
-      ViewControl
   End If
    For i = 0 To objmax
     show_3D d3.hDC, CInt(UBound(D3obj(i).KO)), D3obj(i).KO(0), CInt(d3.ScaleWidth \ 2), CInt(d3.ScaleHeight \ 2)

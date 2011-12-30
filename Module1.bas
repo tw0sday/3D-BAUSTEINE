@@ -5,6 +5,11 @@ Attribute VB_Name = "MODULE1"
 '  Programmbeschreibung: Modul zur 3D-Ausgabe von "Drahmodellen"              Datum:   9.1.2001
 '  benötigt CPP-DLL graf3d32.DLL zur schnelleren Ausgabe in 3D-Picture
 '**********************************************************************************************
+'**********************************************************************************************
+'            D a t e n s t r u k t u r e n  u n d   S t r u k t u r v a r i a b l e n
+'**********************************************************************************************
+
+
 Option Explicit
 
 ' *** Datenstrukturen zur Verwaltung der Oberfläche ***
@@ -48,7 +53,7 @@ End Type
 Type POV_Object          'Datenstuktur für POV-Objekt'
   typ As Integer         'Objekttyp 1...View(akti)
   bez As String * 15     'Bezeichnung z.B. Kugel 1
-  pov As String * 15     'Pov-Bezeichnung z.B. sphere, box,...
+  POV As String * 15     'Pov-Bezeichnung z.B. sphere, box,...
   p() As R3_Point        'Punkt 1-n dynamisches Array!
                          'Kugel 1 Punkt, Dreieck 3 Punkte ...
   scale As R3_Point      'eigentlich Skalierungs-Zahlentripel!
@@ -84,15 +89,6 @@ Global Const r = pi / 180
         'farbe As Long
     End Type
     
-    
-    '3D-Zeichenroutinen wurden aus Performancegründen in C implementiert
-    'hier sind die Übergabeparameter definiert
-    Declare Sub show_3D Lib "c:\3dbau\graf3d32.DLL" (ByVal hDC&, ByVal anzahl%, l As linientype, ByVal x%, ByVal y%)
-    Declare Sub rotation Lib "c:\3dbau\graf3d32.DLL" (ByVal anzahl%, l As linientype, ByVal alpha%, ByVal beta%, ByVal gamma%)
-    Declare Sub scalierung Lib "c:\3dbau\graf3d32.DLL" (ByVal anzahl%, l As linientype, ByVal scal As Double)
-    Declare Sub translation Lib "c:\3dbau\graf3d32.DLL" (ByVal anzahl%, l As linientype, ByVal dx%, ByVal dy%, ByVal dz%)
-    'Declare Sub Pen_3D Lib "c:\3dbau\graf3d32.DLL" (ByVal Pstyle%, ByVal Pwidth%, r As Byte, g As Byte, b As Byte)
-
 
 Type D3_Körper
   KO() As linientype           'Dynamisches Array von linien
@@ -103,6 +99,21 @@ Global obj() As POV_Object     'Dynamisches Array der POV-Object Struktur
 Global D3obj() As D3_Körper    'Dynamisches Array von Körpern
 Global d3akto As Integer       'aktueller 3DKörper
 
+
+Global akti%                        'Index des akt. Views im view-Array
+
+Global akto%                        'Index des akt. Objekts im obj-Array
+Global objmax                          'groesse des obj-Arrays
+Global Itool, Itool2                ' Toolbar Indizes
+
+
+'3D-Zeichenroutinen wurden aus Performancegründen in C implementiert
+'hier sind die Übergabeparameter definiert
+Declare Sub show_3D Lib "c:\3dbau\graf3d32.DLL" (ByVal hDC&, ByVal anzahl%, l As linientype, ByVal x%, ByVal y%)
+Declare Sub rotation Lib "c:\3dbau\graf3d32.DLL" (ByVal anzahl%, l As linientype, ByVal alpha%, ByVal beta%, ByVal gamma%)
+Declare Sub scalierung Lib "c:\3dbau\graf3d32.DLL" (ByVal anzahl%, l As linientype, ByVal scal As Double)
+Declare Sub translation Lib "c:\3dbau\graf3d32.DLL" (ByVal anzahl%, l As linientype, ByVal dx%, ByVal dy%, ByVal dz%)
+'Declare Sub Pen_3D Lib "c:\3dbau\graf3d32.DLL" (ByVal Pstyle%, ByVal Pwidth%, r As Byte, g As Byte, b As Byte)
 
 
 Sub Scala()                    'Achsenkreuz und Gitterraster im Grundriss
@@ -336,4 +347,5 @@ h2 = s                                  'am Nordpol beginnend
  Next b
  Next l
 End Sub
+
 
