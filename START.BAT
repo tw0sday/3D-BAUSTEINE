@@ -1,1 +1,1 @@
-c:\pov31\bin\povengine.exe +W800 +H600 +A +P +X +D -V -Ia:ausgabe.pov -Lc:\3dbau\pov\include\ 
+c:\3dbau\pov\povray.exe +W300 +H200 +A +P +X +D -V -Ic:\3dbau\ausgabe.pov -Lc:\3dbau\pov\include\ -oc:\3dbau\ausgabe.bmp
