@@ -49,9 +49,9 @@ End Sub
 Private Function §(Wert) As Variant         'Ausgabe einer Dezimalzahl mit "." als Komma
 Dim str1 As String * 6, str2 As String * 1
 '  § = Left$(Str$(Wert * pi / pi), 6) & " "  'etwas seltsam, aber funktioniert!
- str1 = Str$(Wert): str2 = ","
+ str1 = str$(Wert): str2 = ","
  If InStr(1, str1, str2) > 0 Then § = Mid$(str1, InStr(1, str1, str2), 1) = "."
- If InStr(1, str1, str2) = 0 Then § = Left$(Str$(Wert), 6)
+ If InStr(1, str1, str2) = 0 Then § = Left$(str$(Wert), 6)
  
 End Function                                '6 Stellen
 
@@ -110,7 +110,7 @@ Private Sub pov_scale()
 If akto > 0 And akto <= UBound(obj) Then
   With obj(akto)                            'Aktuelles Objekt Scalierung ausgeben
     
-    app "scale <" & §(.scale.y) & "," & §(.scale.z) & "," & §(.scale.x) & "> "
+    app vbCrLf & "scale <" & §(.scale.y) & "," & §(.scale.z) & "," & §(.scale.x) & "> "
                                             'Koordinatentransformation!!!!  GZ -> POV
   End With                                  '=============================
  End If                                     'x -> -z , y -> x , z -> y
@@ -364,10 +364,24 @@ Private Sub pov_CSG()                           'Ausgabe der Struktur für pov-Sz
   With obj(akto)                                'Aktuelles Objekt CSG ....
                                                 'Einzelfarben oder Gesamtfärbung
   If .defcol <> vbWhite Or .texi <> 0 Then povColor = False
-    appCr "// Objekt: " & akto & " " & .r(1) & " ." & .bez & vbCrLf
+    appCr "// Objekt: " & akto & " " & .bez & .r(1) & vbCrLf
     app .POV & "{" & vbCrLf                     'CSG-Kommando & {
   End With
 End Sub
+'****************************************************************************************
+
+Private Sub pov_declare()                       'Ausgabe der Struktur für pov-Szenendatei
+Dim str
+
+  With obj(akto)                                'Aktuelles Objekt
+  str = .bez                                    'Bezeichnung der #Neu "XY" Anweisung
+                                              
+  If .defcol <> vbWhite Or .texi <> 0 Then povColor = False             '#declare XY =
+    appCr "// Objekt: " & akto & " " & .r(1) & " ." & .bez & vbCrLf
+    app .POV & " " & Trim$(Mid$(str, 5, Len(str))) & "="        'Bezeichnung ohne #Neu
+  End With
+End Sub
+
 '****************************************************************************************
 
 Private Sub pov_CSG_End()                       'Ausgabe der Struktur für pov-Szenendatei
@@ -384,6 +398,34 @@ Private Sub pov_CSG_End()                       'Ausgabe der Struktur für pov-Sz
 '    app "}"                                    'CSG beenden
     appCr "// Objekt: " & akto & " " & .bez & .r(1)
 
+  End With
+End Sub
+'****************************************************************************************
+
+Private Sub pov_declare_Ende()                  'Ausgabe der Struktur für pov-Szenendatei
+
+  With obj(akto)                                'Aktuelles Objekt CSG ....
+    .defcol = obj(.r(1)).defcol                 'Werte aus zugehöriger CSG-Anweisung
+    .texi = obj(.r(1)).texi                     'hierher kopieren
+    .rot = obj(.r(1)).rot
+    .trans = obj(.r(1)).trans
+    .scale = obj(.r(1)).scale                   'Einzelfarben oder Gesamtfärbung
+    appCr "// Objekt: " & akto & " " & .bez & .r(1) & vbCrLf
+    app "object { " & .POV                      'object { XY
+    povColor = True
+    pov_transform
+    pov_tex
+  End With
+End Sub
+'****************************************************************************************
+
+Private Sub pov_new_Object()                    'Ausgabe der Struktur für pov-Szenendatei
+
+  With obj(akto)                                'Aktuelles Objekt CSG ....
+    appCr "// Objekt: " & akto & " " & .bez & vbCrLf
+    app "object { " & .POV                      'object { XY
+    povColor = True
+    pov_transform
   End With
 End Sub
 '****************************************************************************************
@@ -406,8 +448,10 @@ If objmax > 0 Then                              'Objektarray nicht leer
        Case 7: Call pov_Prisma                  '3 seit. Prisma
        Case 8: Call pov_Disc                    'kreisrunde Scheibe
        Case -100: Call pov_CSG_End              'CSG-Ende
-       Case -105 To -101: Call pov_CSG          'CSG-Beginn
-       
+       Case -104 To -101: Call pov_CSG          'CSG-Beginn
+       Case -105: Call pov_declare              '#declare
+       Case -106: Call pov_declare_Ende         'Ende deklarierter Körper
+       Case 200: Call pov_new_Object            'neu deklarierter Körper
        Case Else: Debug.Print "POV-Objekt unbekannter Typ:" & .typ, .bez
      End Select
      If .typ > 0 Then pov_tex                   'Textur oder Farbe zuordnen

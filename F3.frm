@@ -15,13 +15,13 @@ Begin VB.Form F3
    ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows-Standard
    Begin ComctlLib.Toolbar TB1 
-      Height          =   630
+      Height          =   6900
       Left            =   0
       TabIndex        =   0
       Top             =   0
       Width           =   855
       _ExtentX        =   1508
-      _ExtentY        =   1111
+      _ExtentY        =   13176
       ButtonWidth     =   1032
       ButtonHeight    =   1005
       Appearance      =   1
@@ -30,60 +30,73 @@ Begin VB.Form F3
       BeginProperty Buttons {0713E452-850A-101B-AFC0-4210102A8DA7} 
          NumButtons      =   13
          BeginProperty Button1 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Position"
             Object.Tag             =   ""
             ImageIndex      =   1
          EndProperty
          BeginProperty Button2 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Körper einfügen"
             Object.Tag             =   ""
             ImageIndex      =   2
          EndProperty
          BeginProperty Button3 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Bearbeiten"
             Object.Tag             =   ""
             ImageIndex      =   3
          EndProperty
          BeginProperty Button4 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Farbe ändern"
             Object.Tag             =   ""
             ImageIndex      =   4
          EndProperty
          BeginProperty Button5 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Raytrace"
             Object.Tag             =   ""
             ImageIndex      =   5
          EndProperty
          BeginProperty Button6 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "3D-Zoom"
             Object.Tag             =   ""
             ImageIndex      =   6
          EndProperty
          BeginProperty Button7 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Ausgabe"
             Object.Tag             =   ""
             ImageIndex      =   7
          EndProperty
          BeginProperty Button8 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Beenden"
             Object.Tag             =   ""
             ImageIndex      =   8
          EndProperty
          BeginProperty Button9 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.ToolTipText     =   "Dia-Show"
             Object.Tag             =   ""
             ImageIndex      =   9
          EndProperty
          BeginProperty Button10 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Button11 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Button12 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
          BeginProperty Button13 {0713F354-850A-101B-AFC0-4210102A8DA7} 
+            Key             =   ""
             Object.Tag             =   ""
          EndProperty
       EndProperty

@@ -2,7 +2,7 @@
 
 // 3D-Baukasten Version 1.2 (c) 2002 H.Kleber 
 
-// POV 2 Datei Datum: 24.02.2002 Zeit: 15:16:46
+// POV 2 Datei Datum: 24.02.2002 Zeit: 21:57:40
 
 //==========================================================
 
@@ -24,48 +24,36 @@ plane {<0,1,0> 0 pigment {checker color White color Silver}
 
 finish {ambient 0.3 reflection 0.3}}
 
-// Objekt: 1 1 .CSG-Summe      
+// Objekt: 1 0 .#Neu XY        
+
+
+#declare XY=// Objekt: 2 CSG-Summe      1
 
 
 merge{
-// Objekt: 2 Quader         
-
-box{ < 0, 0, 0> , < 1, 1,-1> scale < 6, 4, 6> rotate < 0, 0, 0> translate < 2, 0,-2> 
- pigment {rgb < .7450, .5019, .3882> }}
-
-
 // Objekt: 3 Zylinder       
 
-cylinder{ < 0, 0, 0> , < 0, 1, 0> , 1scale < 3, 3, 3> rotate < 0, 0, 0> translate < 5, 4,-5> 
- pigment {rgb < .5960, .2313, .4039> }}
+cylinder{ < 0, 0, 0> , < 0, 1, 0> , 1
+scale < 1, 5, 1> rotate < 0, 0, 0> translate < 4, 0,-4> 
+ pigment {rgb < .1882, .7333, 0> }}
 
-
-// Objekt: 4 Kegel          
-
-cone{ < 0, 0, 0> , 1, < 0, 1, 0> ,0scale < 3, 7, 3> rotate < 0, 0, 0> translate < 5, 7,-5> 
- pigment {rgb < 1, 1, 0> }}
-
-
-// Objekt: 5 1 .CSG-Negation   
-
-
-negation{
-// Objekt: 6 Kugel          
-
-sphere{ < 0, 0, 0> , 1scale < 2, 2, 2> rotate < 0, 0, 0> translate < 5, 11,-5> 
- pigment {rgb < .4784, .7333, .3450> }}
 
 
 scale < 1, 1, 1> rotate < 0, 0, 0> translate < 0, 0, 0> 
  pigment {rgb < 1, 1, 1> }}
 
 
-// Objekt: 7 CSG-Ende       5
+// Objekt: 4 CSG-Ende       2
 
-scale < 1, 1, 1> rotate < 0, 0, 0> translate < 0, 0, 0> 
- pigment {rgb < 1, 1, 1> }}
+// Objekt: 5 XY             
 
 
-// Objekt: 8 CSG-Ende       5
+object { XY             
+scale < 1, 5, 1> rotate < 0, 0, 0> translate < 4, 0,-4> 
+ pigment {rgb < .7686, .4313, .6470> }}
+
+
+ pigment {rgb < .7686, .4313, .6470> }}
+
 
 

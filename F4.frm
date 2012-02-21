@@ -1106,7 +1106,7 @@ Attribute VB_Exposed = False
 '****************************************************************************************
 
 Dim started As Boolean
-Dim aktcsg%, csgd%                              'Zähler für CSG-Funktionen
+Dim aktcsg%, csgd%, decd%                       'Zähler für CSG-Funktionen und #declare
 Dim csgstr  'As String * 10                     'csg-Anzeigestring
 
 
@@ -1121,7 +1121,7 @@ Private Sub Form_Load()                         'Form F4-Registerfenster laden
   Call Def_Objekte                              'Standardobjekte Auswahl
   Call Def_Datei
   Call Def_Bilder
-  aktcsg = 0: csgd = 0                          'CSG-Zähler
+  aktcsg = 0: csgd = 0: decd = 0                'CSG-Zähler
   csgstr = ""                                   'csgstr = leer
   
 
@@ -1283,11 +1283,56 @@ Private Sub File1_Click()                       'Listenauswahl gedrückt
 End Sub
 
 '****************************************************************************************
+'                               K a m e r a f u n k t i o n e n
+'****************************************************************************************
+
+Private Sub start_Click()
+  started = True
+  
+End Sub
+
+
+Private Sub HS_Change(ind As Integer)
+  HST(ind).Text = HS(ind).Value
+End Sub
+
+
+'****************************************************************************************
+Private Sub Timer2_Timer()
+Dim i%, ind%, w(1 To 3) As Integer, x%
+
+If started Then
+
+ For ind = 1 To 3
+   x = Int(Val(HST(ind).Text))
+   
+  If x > 0 Then
+   'w(1) = 0: w(2) = 0: w(3) = 0
+   If x > 0 Then w(ind) = 1
+   Form1.d3.Cls                      'kann aus Performancegründen aus der Schleife sein
+   objmax = UBound(obj)
+     For i = 0 To UBound(obj)
+       Form1.d3.ForeColor = obj(i).defcol
+       rotation CInt(UBound(D3obj(i).KO)), D3obj(i).KO(0), w(2), w(3), w(1)
+       show_3D Form1.d3.hDC, CInt(UBound(D3obj(i).KO)), D3obj(i).KO(0), _
+       CInt(Form1.d3.ScaleWidth \ 2), CInt(Form1.d3.ScaleHeight * 0.7)
+     Next i
+   HST(ind).Text = Val(HST(ind).Text - 2)
+   HS(ind).Value = HST(ind).Text
+  End If
+ 'If (w(1) = 0) And (w(2) = 0) And (w(3) = 0) Then started = False
+
+  
+ Next ind
+End If 'start
+End Sub
+
+'****************************************************************************************
 '                    O b j e k t e i n g a b e / M a n i p u l a t i o n
 '****************************************************************************************
 
 Private Sub Def_Objekte()
- CB1.Text = "Würfel"                            'Default Körper"Würfel"
+ CB1.Text = "Quader"                            'Default Körper"Würfel"
  Call CB1_Click
 End Sub
 
@@ -1316,6 +1361,10 @@ Private Sub Obj_Def_Werte()                     'Objekt-Transformations-Default-
 End Sub
 
 '****************************************************************************************
+Private Sub random_defcolor()               'Farben zufällig erzeugen
+ Randomize
+ obj(akto).defcol = RGB(Int(255 * Rnd), Int(255 * Rnd), Int(255 * Rnd))
+End Sub
 
 Private Sub CB1_DblClick()
   If Left$(CB1.Text, 4) = "CSG-" Then BtnEinf_Click      'sofort einfügen ohne Maske etc.
@@ -1376,7 +1425,7 @@ Public Sub CB1_Click()  '***** Auswahl des Objektes in CB1 (händisch) möglich  *
         L1(10).Caption = "innerer Radius"
         T1(10).Visible = True
    
-   Case Else: Debug.Print " CB1: unbekannter Körper"; akto
+   Case Else:
   End Select
 End Sub
 
@@ -1400,25 +1449,29 @@ Private Sub CB2_ADD(ByVal i%)               'Listeneintrag in Combobox einfügen
 Dim x As String * 1, t%
  
 t = obj(i).typ
-If (t > -106) And (t < -100) Then           'CSG-Objekte
+If (t > -105) And (t < -100) Then           'CSG-Objekte
  Select Case obj(i).typ
+ 
    Case -101: x = "°"                       'Vereinigung
    Case -102: x = "-"                       'Differenz
    Case -103: x = "^"                       'Durchschnitt
    Case -104: x = "+"                       'Summe
-   Case -105: x = "~"                       'Negation
+   'Case -105: x = "#"                       'Declaration
  End Select                                 'noch nicht eingerückt ausgeben
 CB2.AddItem (i & Space$(csgd * 2) & " " & csgstr & obj(i).bez)
 
 csgd = csgd + 1                             'CSG - Tiefe erhöhen
 csgstr = csgstr & x                         'Markierung anhängen
+
 ElseIf t = -100 And Len(csgstr) > 0 Then    'CSG_end
          csgstr = Left$(csgstr, Len(csgstr) - 1) 'letzte Markierung löschen
          If csgd > 0 Then csgd = csgd - 1   'csg - Tiefe verringern
 End If
-If t >= 0 Or t = -100 Then CB2.AddItem (i & Space$(csgd * 2) & " " & csgstr & obj(i).bez)
 
-  Debug.Print "CB2_ADD"; i; csgd & csgstr & obj(i).bez; aktcsg 'normale Körper
+If t >= 0 Or t = -100 Or t < -104 Then CB2.AddItem (i & Space$(csgd * 2) _
+& " " & csgstr & obj(i).bez)
+
+  'Debug.Print "CB2_ADD"; i; csgd & csgstr & obj(i).bez; aktcsg 'normale Körper
 End Sub
 
 
@@ -1452,7 +1505,7 @@ If objmax > 0 And akto > 0 Then             'leere Liste löschen ?
     Call Form1.ViewRefresh                  'Anzeige aktualisieren
   End If
   If objmax = 0 Then CB1.Text = "Würfel"    'Default-Körper
-  
+  CB2.Selected(CB2.ListCount - 1) = True    'letztes Objekt anzeigen
   Form1.D3_Resize
 End Sub
 '****************************************************************************************
@@ -1482,7 +1535,7 @@ Dim i As Integer                            'nach oben
         Debug.Print "SOU-akto "; i & "<" & i - 1, obj(i).bez
       Next i
     End If
-    CB2_Refresh        'CSG-Objekt gelöscht CB2 neu füllen
+    CB2_Refresh                             'CSG-Objekt gelöscht CB2 neu füllen
 End Sub
 '****************************************************************************************
 
@@ -1492,8 +1545,8 @@ Sub Clear_All_Objects()                     'Objektarray leeren
     
     objmax = 0                              'Objektarray dynamisch verkleinern
     akto = objmax
-    ReDim Preserve obj(objmax)              'Dyn Array-Feld anlegen
-                                            'sonst werden vorhandene Elemente gelöscht!
+    ReDim obj(objmax)                       'Dyn Array-Feld (POV-)Objekte
+    ReDim D3obj(objmax)                     'Dyn Array 3DPunkte,Kanten,etc.
     Call Form1.ViewRefresh                  'Anzeige aktualisieren
     Call Form1.D3_Resize
   End If
@@ -1708,23 +1761,96 @@ With obj(akto)
    Case -102: .POV = "difference"                       'Subtraktion
    Case -103: .POV = "intersection"                     'Durchschnitt
    Case -104: .POV = "merge"                            'Addition
-   Case -105: .POV = "negation"                         'Negation
  End Select
-End With
+End With                                                'vor dem CSG ein Neu_Declare ?
+'NeuE: If obj(akto).typ = -100 And decd > 0 And obj(obj(akto).r(1) - 1).typ = 105 Then
+' CB1.Text = "Neu_Ende": Call BtnEinf_Click              'Declare-Anweisung
+'End If                                                  'automatisch schliesssen
 End Sub
 
 '****************************************************************************************
 
-Function LastCSG(ByVal akt%) As Integer     'Welche CSG schliesst csg-end eigentlich?
+Function LastCSG(ByVal akt%) As Integer         'Welche CSG schliesst csg-end eigentlich?
 Dim i%
 i = akt
-Do                 'Array vom aktuellen Obj. abwärts durchsuchen
+Do                                              'Array vom aktuellen Obj. abwärts durchsuchen
   i = i - 1
-Loop Until i < 1 Or ((obj(i).typ < -100) And (obj(i).typ > -106))
+Loop Until i < 1 Or ((obj(i).typ < -100) And (obj(i).typ > -105))
 Debug.Print "Lastcsg "; i
 LastCSG = i
 End Function
+'****************************************************************************************
 
+Function LastDecl(ByVal akt%) As Integer        'Welche Declare Anweisungschliesst -end
+Dim i%                                          'eigentlich?
+i = akt
+Do                                              'Array vom aktuellen Obj. abwärts durchsuchen
+  i = i - 1
+Loop Until i < 1 Or (obj(i).typ = -105)
+Debug.Print "LastDECL "; i
+LastDecl = i
+End Function
+'****************************************************************************************
+
+Sub Neu_Declare()                   'Einfügen eines CSG-objektes vorbereiten (POV-CSG-Objecte)
+                                    'Objektarray um Geometriedaten erweitern und füllen
+decd = decd + 1
+With obj(akto)
+  ReDim .r(1)
+ .r(1) = aktcsg                                     'akt. Nr der Csg speichern
+ .typ = -105                                        'Objekt-Struktur füllen
+ .bez = CB1.Text & " XY"
+ .defcol = vbWhite
+ .POV = "#declare"                                  'Deklaration neuer Körper
+End With
+ CB1.Text = "CSG-Summe"                             'automatisch ein CSG dannach
+ BtnEinf_Click
+End Sub
+ 
+'****************************************************************************************
+
+Sub Neu_Ende()                   'Einfügen eines CSG-objektes vorbereiten (POV-CSG-Objecte)
+Dim str                           'Objektarray um Geometriedaten erweitern und füllen
+                                 
+decd = decd - 1
+With obj(akto)
+  ReDim .r(2)
+ .r(1) = LastDecl(akto)                             'Nr d. #deklare Anweisung speichern
+ .r(2) = akto                                       'Nr der #declare End Anweisung
+ .typ = -106                                        'Objekt-Struktur füllen
+  str = obj(.r(1)).bez                              'Bezeichnung der #Neu "XY" Anweisung
+ .bez = Trim$(Mid$(str, 5, Len(str)))               'Bezeichnung ohne #Neu
+ .defcol = vbWhite
+ .POV = .bez                                        'Deklaration neuer Körper
+ CB1.AddItem .bez                                   'neuen Körper in Auswahlliste anhängen
+End With
+End Sub
+'****************************************************************************************
+
+Function in_cb1(str) As Boolean
+Dim i%, b1 As Boolean
+ 
+ b1 = False: in_cb1 = False
+ For i = 0 To CB1.ListCount
+   If Trim$(CB1.List(i)) = Trim$(str) Then b1 = True
+   in_cb1 = in_cb1 Or b1
+   Debug.Print "in_cb1 ", CB1.List(i), str, in_cb1
+ Next i
+End Function
+
+
+'****************************************************************************************
+
+Sub new_object()                   'Einfügen eines CSG-objektes vorbereiten (POV-CSG-Objecte)
+
+With obj(akto)
+ .typ = 200                                         'Objekt-Struktur füllen
+ .bez = Trim$(CB1.Text)                             'Bezeichnung
+ .defcol = vbWhite
+ .POV = .bez                                        'Deklaration neuer Körper
+End With
+End Sub
+    
 '****************************************************************************************
 '                    O b j e k t e   e i n f ü g e n / l ö s c h e n
 '****************************************************************************************
@@ -1741,8 +1867,10 @@ Sub Fill_CB1_Objekt()                       'Combobox1 mit Objektnamen füllen
   CB1.AddItem "CSG-Differenz"
   CB1.AddItem "CSG-Durchschnitt"
   CB1.AddItem "CSG-Summe"
-  CB1.AddItem "CSG-Negation"
   CB1.AddItem "CSG-Ende"
+  CB1.AddItem "#Neu"
+  CB1.AddItem "Neu_Ende"
+
 End Sub
 
 '****************************************************************************************
@@ -1764,16 +1892,12 @@ If akto > objmax Then akto = objmax
  End Select
  FillTrans                                  'Transformationswerte in Objektarray
  D3_Refresh (akto)                          'Transformationsmatrix
- CB2.Selected(CB2.ListCount - 1) = True   'letztes Objekt anzeigen
+ CB2.Selected(CB2.ListCount - 1) = True     'letztes Objekt anzeigen
  Call Form1.D3_Resize                       '3D Ansicht neu zeichnen
  Call Form1.ViewRefresh                     '2D Views neu zeichnen
 End Sub
 
 '****************************************************************************************
-Private Sub random_defcolor()               'Farben zufällig erzeugen
- Randomize
- obj(akto).defcol = RGB(Int(255 * Rnd), Int(255 * Rnd), Int(255 * Rnd))
-End Sub
 
 Sub BtnEinf_Click()                         'Objekte Einfügen Taste gedrückt
 Dim ok As Boolean, ListI%
@@ -1785,7 +1909,7 @@ Dim ok As Boolean, ListI%
  d3zoomf = 10
  ReDim Preserve obj(objmax)                 'Dyn Array-Feld anlegen, WICHTIG: Preserve !!
  D3_Refresh (objmax)                        'Punkt und Kantenkoordinaten einlesen
- ListI = CB2.ListIndex + 1                  'nicht am Ende einfügen
+ ListI = CB2.ListIndex + 1                  'falls nicht am Ende einfügen
  
  If (ListI > 0) And (ListI < objmax) Then
   akto = ListI                              'nach dem akt. ausgewählten Objekt einfügen
@@ -1803,19 +1927,25 @@ Dim ok As Boolean, ListI%
    Case "Pyramide": Call Pyramide
    Case "Prisma": Call Prisma
    Case "Disc": Call Disc
+   Case "CSG-Ende": CSG -100
    Case "CSG-Vereinigung": CSG -101         'CSG-Objekte
    Case "CSG-Differenz": CSG -102
    Case "CSG-Durchschnitt": CSG -103
    Case "CSG-Summe": CSG -104
-   Case "CSG-Negation": CSG -105
-   Case "CSG-Ende": CSG -100
-   
-   Case Else: Debug.Print "BtnEinf unbekannter Körper "; akto; CB1.Text
+   Case "#Neu": Neu_Declare
+   Case "Neu_Ende": Neu_Ende
+  
+   Case Else:
+              If in_cb1(Trim(CB1.Text)) Then
+                new_object
+              Else
+                Debug.Print "BtnEinf unbekannter Körper "; akto; CB1.Text
               ok = False
+              End If
  End Select
 
                                             'falls ein Fehler beim Einfügen...
- 'If ok = False Then objmax = objmax - 1: akto = objmax: ReDim Preserve obj(objmax)
+ If ok = False Then objmax = objmax - 1: akto = objmax: ReDim Preserve obj(objmax)
  
  If ok = True Then                          'Eifügen OK
 
@@ -1830,50 +1960,6 @@ Dim ok As Boolean, ListI%
  End If
 End Sub
 
-'****************************************************************************************
-'                               K a m e r a f u n k t i o n e n
-'****************************************************************************************
-
-Private Sub start_Click()
-  started = True
-  
-End Sub
-
-
-Private Sub HS_Change(ind As Integer)
-  HST(ind).Text = HS(ind).Value
-End Sub
-
-
-'****************************************************************************************
-Private Sub Timer2_Timer()
-Dim i%, ind%, w(1 To 3) As Integer, x%
-
-If started Then
-
- For ind = 1 To 3
-   x = Int(Val(HST(ind).Text))
-   
-  If x > 0 Then
-   'w(1) = 0: w(2) = 0: w(3) = 0
-   If x > 0 Then w(ind) = 1
-   Form1.d3.Cls                      'kann aus Performancegründen aus der Schleife sein
-   objmax = UBound(obj)
-     For i = 0 To UBound(obj)
-       Form1.d3.ForeColor = obj(i).defcol
-       rotation CInt(UBound(D3obj(i).KO)), D3obj(i).KO(0), w(2), w(3), w(1)
-       show_3D Form1.d3.hDC, CInt(UBound(D3obj(i).KO)), D3obj(i).KO(0), _
-       CInt(Form1.d3.ScaleWidth \ 2), CInt(Form1.d3.ScaleHeight * 0.7)
-     Next i
-   HST(ind).Text = Val(HST(ind).Text - 2)
-   HS(ind).Value = HST(ind).Text
-  End If
- 'If (w(1) = 0) And (w(2) = 0) And (w(3) = 0) Then started = False
-
-  
- Next ind
-End If 'start
-End Sub
 
 '****************************************************************************************
 '*******************************************  EOF  **************************************
