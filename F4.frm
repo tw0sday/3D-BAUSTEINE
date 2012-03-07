@@ -1799,7 +1799,7 @@ With obj(akto)
   ReDim .r(1)
  .r(1) = aktcsg                                     'akt. Nr der Csg speichern
  .typ = -105                                        'Objekt-Struktur füllen
- .bez = CB1.Text & " XY"
+ .bez = CB1.Text & " Teil" & aktcsg                 'Benennung des Teils
  .defcol = vbWhite
  .POV = "#declare"                                  'Deklaration neuer Körper
 End With

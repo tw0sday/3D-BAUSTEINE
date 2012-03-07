@@ -4,9 +4,9 @@ Attribute VB_Name = "POV"
 '========================================================================================
 '  Programmbeschreibung: Modul POV.bas                                  Datum:  30.1.2002
 '
-'Die Szenendatei für den Raytracer POV (persistence of vision) besteht aus einer Textdatei
-'mit den Anweisungen für die Erstellung von Objekten, deren Position und deren Lage im Raum,
-'sowie deren Oberflächenaussehen und Beleuchtung.
+'Die Szenendatei fï¿½r den Raytracer POV (persistence of vision) besteht aus einer Textdatei
+'mit den Anweisungen fï¿½r die Erstellung von Objekten, deren Position und deren Lage im Raum,
+'sowie deren Oberflï¿½chenaussehen und Beleuchtung.
 '
 '****************************************************************************************
 '                                  P O V - E x p o r t
@@ -17,9 +17,9 @@ Sub Def_Pov()                       'Standardausgaben in die POV-Datei
 povColor = True
 
 With F4.Text1
- .Text = ""                                 'Textfeld löschen
+ .Text = ""                                 'Textfeld lï¿½schen
  appCr "//=========================================================="
- appCr "// 3D-Baukasten Version 1.2 (c) 2002 H.Kleber "
+ appCr "// 3D-Baukasten Version 1.3 (c) 2002 H.Kleber "
  appCr "// POV 2 Datei Datum: " & Date & " Zeit: " & Time
  appCr "//=========================================================="
  .Text = .Text & F4.T_incl.Text '#inlude Befehle aus dem unsichtb. Textfeld T_incl kopieren
@@ -30,8 +30,8 @@ With F4.Text1
  appCr "light_source {<5,10,-20> color White}" & vbCrLf
  appCr "plane {<0,1,0> 0 pigment {checker color White color Silver} "
  appCr "finish {ambient 0.3 reflection 0.3}}"
- 'appCr "plane {<1,0,0> 0 pigment {color White} finish {ambient 0.3}}"
- 'appCr "plane {<0,0,1> 0 pigment {color White} finish {ambient 0.3}}"
+ appCr "plane {<1,0,0> 0 pigment {color White} finish {ambient 0.3}}"
+ appCr "plane {<0,0,1> 0 pigment {color White} finish {ambient 0.3}}"
  
 End With
 End Sub
@@ -39,19 +39,19 @@ End Sub
 '****************************************************************************************
 
 Private Sub app(ptxt As String)             'Ausgabe auf Textfeld bzw. Datei
- F4.Text1.Text = F4.Text1.Text & ptxt             'String jeweils anhängen
+ F4.Text1.Text = F4.Text1.Text & ptxt             'String jeweils anhï¿½ngen
 End Sub
 
 Private Sub appCr(ptxt As String)           'Ausgabe auf Textfeld bzw. Datei
- F4.Text1.Text = F4.Text1.Text & ptxt & vbCrLf & vbCrLf   'String jeweils anhängen + CR LF
+ F4.Text1.Text = F4.Text1.Text & ptxt & vbCrLf & vbCrLf   'String jeweils anhï¿½ngen + CR LF
 End Sub
 
-Private Function §(Wert) As Variant         'Ausgabe einer Dezimalzahl mit "." als Komma
+Private Function ï¿½(Wert) As Variant         'Ausgabe einer Dezimalzahl mit "." als Komma
 Dim str1 As String * 6, str2 As String * 1
-'  § = Left$(Str$(Wert * pi / pi), 6) & " "  'etwas seltsam, aber funktioniert!
+'  ï¿½ = Left$(Str$(Wert * pi / pi), 6) & " "  'etwas seltsam, aber funktioniert!
  str1 = str$(Wert): str2 = ","
- If InStr(1, str1, str2) > 0 Then § = Mid$(str1, InStr(1, str1, str2), 1) = "."
- If InStr(1, str1, str2) = 0 Then § = Left$(str$(Wert), 6)
+ If InStr(1, str1, str2) > 0 Then ï¿½ = Mid$(str1, InStr(1, str1, str2), 1) = "."
+ If InStr(1, str1, str2) = 0 Then ï¿½ = Left$(str$(Wert), 6)
  
 End Function                                '6 Stellen
 
@@ -62,7 +62,7 @@ Private Sub pov_p(ByVal ind%)               'Punktkoordinaten ausgeben <x,y,z>
 If akto > 0 And akto <= UBound(obj) And ind > 0 Then
   With obj(akto)                            'Aktuelles Objekt Punktkoordinaten ausgeben
     
-    app " <" & §(.P(ind).y) & "," & §(.P(ind).z) & "," & §(-.P(ind).x) & "> "
+    app " <" & ï¿½(.P(ind).y) & "," & ï¿½(.P(ind).z) & "," & ï¿½(-.P(ind).x) & "> "
                                             'Koordinatentransformation!!!!  GZ -> POV
   End With                                  '=============================
  End If                                     'x -> -z , y -> x , z -> y
@@ -74,7 +74,7 @@ Private Sub pov_xyp(ByVal ind%)             'Punktkoordinaten ausgeben <x,y> 2-d
 If akto > 0 And akto <= UBound(obj) And ind > 0 Then
   With obj(akto)                            'Aktuelles Objekt Punktkoordinaten ausgeben
     
-    app " <" & §(.P(ind).y) & "," & §(-.P(ind).x) & "> "
+    app " <" & ï¿½(.P(ind).y) & "," & ï¿½(-.P(ind).x) & "> "
                                           
   End With                                  'keine Koordinaten-Transformation
  End If
@@ -87,7 +87,7 @@ Private Sub pov_d3p(ByVal ind%)             'Punktkoordinaten aus d3obj-Punktlis
 If akto > 0 And akto <= UBound(obj) And ind > 0 Then
   With D3obj(akto)                          'Aktuelles D3Objekt Punktkoordinaten ausgeben
     
-    app " <" & §(.V(ind).y) & "," & §(.V(ind).z) & "," & §(-.V(ind).x) & "> "
+    app " <" & ï¿½(.V(ind).y) & "," & ï¿½(.V(ind).z) & "," & ï¿½(-.V(ind).x) & "> "
                                             'Koordinatentransformation!!!!  GZ -> POV
   End With                                  '=============================
  End If                                     'x -> -z , y -> x , z -> y
@@ -99,7 +99,7 @@ Private Sub pov_d2p(ByVal ind%)             'Punktkoordinaten aus d3obj-Punktlis
 If akto > 0 And akto <= UBound(obj) And ind > 0 Then
   With D3obj(akto)                          'Aktuelles D3Objekt Punktkoordinaten ausgeben
     
-    app " <" & §(.V(ind).y) & "," & §(.V(ind).z) & "> "
+    app " <" & ï¿½(.V(ind).y) & "," & ï¿½(.V(ind).z) & "> "
                                             'Koordinatentransformation!!!!  GZ -> POV
   End With                                  '=============================
  End If                                     'y -> x , z -> y
@@ -110,7 +110,7 @@ Private Sub pov_scale()
 If akto > 0 And akto <= UBound(obj) Then
   With obj(akto)                            'Aktuelles Objekt Scalierung ausgeben
     
-    app vbCrLf & "scale <" & §(.scale.y) & "," & §(.scale.z) & "," & §(.scale.x) & "> "
+    app vbCrLf & "scale <" & ï¿½(.scale.y) & "," & ï¿½(.scale.z) & "," & ï¿½(.scale.x) & "> "
                                             'Koordinatentransformation!!!!  GZ -> POV
   End With                                  '=============================
  End If                                     'x -> -z , y -> x , z -> y
@@ -122,7 +122,7 @@ Private Sub pov_rotate()
 If akto > 0 And akto <= UBound(obj) Then
   With obj(akto)                            'Aktuelles Objekt Scalierung ausgeben
     
-    app "rotate <" & §(-.rot.y) & "," & §(-.rot.z) & "," & §(.rot.x) & "> "
+    app "rotate <" & ï¿½(-.rot.y) & "," & ï¿½(-.rot.z) & "," & ï¿½(.rot.x) & "> "
                                             'Koordinatentransformation!!!!  GZ -> POV
   End With                                  '=============================
  End If                                     'x -> -z , y -> x , z -> y
@@ -134,10 +134,10 @@ Private Sub pov_translate()
 If akto > 0 And akto <= UBound(obj) Then
   With obj(akto)                            'Aktuelles Objekt Translation ausgeben
                                             'Verschiebung zwischen Objektursprung
-                                            'und POV-Anhaltspunkt möglich! (P00)
-    app "translate <" & §(.trans.y + .P00.y * .scale.y) _
-                & "," & §(.trans.z + .P00.z * .scale.z) _
-                & "," & §(-.trans.x + -.P00.x * .scale.x) & "> " _
+                                            'und POV-Anhaltspunkt mï¿½glich! (P00)
+    app "translate <" & ï¿½(.trans.y + .P00.y * .scale.y) _
+                & "," & ï¿½(.trans.z + .P00.z * .scale.z) _
+                & "," & ï¿½(-.trans.x + -.P00.x * .scale.x) & "> " _
                 & vbCrLf
                                             'Koordinatentransformation!!!!  GZ -> POV
   End With                                  '=============================
@@ -164,13 +164,13 @@ End Function
 
 Private Sub povRGB_lang(ByVal r As Byte, ByVal g As Byte, ByVal b As Byte)
                                             'pov RGB-Werte jeweils 0..1
-  app " color red " & §(r / 255) & " green " & §(g / 255) & " blue " & §(b / 255)
+  app " color red " & ï¿½(r / 255) & " green " & ï¿½(g / 255) & " blue " & ï¿½(b / 255)
 End Sub
 '****************************************************************************************
 
 Private Sub povRGB(ByVal r As Byte, ByVal g As Byte, ByVal b As Byte)
                                             'pov RGB-Werte jeweils 0..1
-  app "rgb <" & §(r / 255) & "," & §(g / 255) & "," & §(b / 255) & ">"
+  app "rgb <" & ï¿½(r / 255) & "," & ï¿½(g / 255) & "," & ï¿½(b / 255) & ">"
 End Sub
 
 '****************************************************************************************
@@ -179,8 +179,8 @@ Private Sub L2RGB(ByVal col As Long)        'LongInteger => GRB Werten
   Dim r, g, b As Integer                    'einzelne Bytes aus long-Variable dividieren
   Debug.Print "RGB "; col                   'Testausdruck
     r = modulo(col, 256)                    'niederwertigstes Byte = Rot
-    b = Int(col / 65536)                    'höchstwertigstes Byte = Blau
-    g = (modulo(col, 65536) - r) / 256      'mittleres Byte = Grün
+    b = Int(col / 65536)                    'hï¿½chstwertigstes Byte = Blau
+    g = (modulo(col, 65536) - r) / 256      'mittleres Byte = Grï¿½n
     Call povRGB(r, g, b)
   Debug.Print "RGB "; akto; " = "; r; g; b
 End Sub
@@ -194,13 +194,13 @@ Private Sub pov_color()
 End Sub
 '****************************************************************************************
 
-Private Sub pov_tex()                           'Einfügen einer Textur oder Farbe
+Private Sub pov_tex()                           'Einfï¿½gen einer Textur oder Farbe
 
 
 With obj(akto)
 If povColor Then                                'wenn bemalt werden soll
   If .texi <> 0 Then                            'Textur statt Farbe
-    app "texture {" & F6.CB3.List(.texi) & "}}" & vbCrLf   'Texturname(Index) anhängen
+    app "texture {" & F6.CB3.List(.texi) & "}}" & vbCrLf   'Texturname(Index) anhï¿½ngen
   Else: pov_color: app vbCrLf                   'Farbe wenn nichts anderes angegeben
   End If
 Else: app "}" & vbCrLf
@@ -212,8 +212,8 @@ End Sub
 '                              P O V - T e x t u r e n
 '****************************************************************************************
 
-Sub Fill_CB3_Texi()                             'Combobox mit Texturnamen füllen
-  F6.CB3.AddItem "Chrome_Metal"                 'Metalloberflächen
+Sub Fill_CB3_Texi()                             'Combobox mit Texturnamen fï¿½llen
+  F6.CB3.AddItem "Chrome_Metal"                 'Metalloberflï¿½chen
   F6.CB3.AddItem "Brass_Metal"
   F6.CB3.AddItem "Gold_Metal"
   F6.CB3.AddItem "Silver_Metal"
@@ -224,7 +224,7 @@ Sub Fill_CB3_Texi()                             'Combobox mit Texturnamen füllen
   F6.CB3.AddItem "Aluminum"
   F6.CB3.AddItem "Rusty_Iron"
   
-  F6.CB3.AddItem "Brown_Agate"                  'Steinoberflächen
+  F6.CB3.AddItem "Brown_Agate"                  'Steinoberflï¿½chen
   F6.CB3.AddItem "Sapphire_Agate"
   F6.CB3.AddItem "Pink_Granite"
   F6.CB3.AddItem "PinkAlabaster"
@@ -232,13 +232,13 @@ Sub Fill_CB3_Texi()                             'Combobox mit Texturnamen füllen
   F6.CB3.AddItem "Red_Marble"
   F6.CB3.AddItem "Jade"
   
-  F6.CB3.AddItem "Glass3"                       'Glasoberflächen
+  F6.CB3.AddItem "Glass3"                       'Glasoberflï¿½chen
   F6.CB3.AddItem "Green_Glass"
   F6.CB3.AddItem "Ruby_Glass"
   F6.CB3.AddItem "NBwinebottle"
   F6.CB3.AddItem "NBbeerbottle"
   
-  F6.CB3.AddItem "Rosewood"                     'Holzoberflächen
+  F6.CB3.AddItem "Rosewood"                     'Holzoberflï¿½chen
   F6.CB3.AddItem "Cherry_Wood"
   F6.CB3.AddItem "Tan_Wood"
   F6.CB3.AddItem "Pine_Wood"
@@ -253,7 +253,7 @@ Sub Fill_CB3_Texi()                             'Combobox mit Texturnamen füllen
   F6.CB3.AddItem "DMFWood5"
   F6.CB3.AddItem "DMFWood6"
   
-  F6.CB3.AddItem "Water"                        'Sonstige Oberflächen
+  F6.CB3.AddItem "Water"                        'Sonstige Oberflï¿½chen
   F6.CB3.AddItem "Candy_Cane"
   F6.CB3.AddItem "Peel"
   F6.CB3.AddItem "Lightening1"
@@ -265,104 +265,104 @@ End Sub
 
 '****************************************************************************************
 
-Private Sub povKugel()                          'Ausgabe der Struktur für pov-Szenendatei
+Private Sub povKugel()                          'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt
     appCr "// Objekt: " & akto & " " & .bez     'Kugel
     app .POV & "{": pov_p (1)                   'Mittelpunkt
-    app "," & §(.r(1))                          'Radius
+    app "," & ï¿½(.r(1))                          'Radius
     pov_transform
   End With
 End Sub
 
 '****************************************************************************************
 
-Sub povKegel()                                  'Ausgabe der Struktur für pov-Szenendatei
+Sub povKegel()                                  'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt
     appCr "// Objekt: " & akto & " " & .bez     'Kegel
-    app .POV & "{": pov_p (1)                   'Mittelpunkt der Grundfläche
-    app "," & §(.r(1)) & ",": pov_p (2): app ",0"  'Spitze
+    app .POV & "{": pov_p (1)                   'Mittelpunkt der Grundflï¿½che
+    app "," & ï¿½(.r(1)) & ",": pov_p (2): app ",0"  'Spitze
     pov_transform
   End With
 End Sub
 
 '****************************************************************************************
 
-Sub povZylinder()                               'Ausgabe der Struktur für pov-Szenendatei
+Sub povZylinder()                               'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt
     appCr "// Objekt: " & akto & " " & .bez     'Kegel
-    app .POV & "{": pov_p (1): app ","          'Mittelpunkte der Grundfläche
-    pov_p (2)                                   'Mittelpunkte der Deckfläche
-    app "," & §(.r(1))                          'Radius
+    app .POV & "{": pov_p (1): app ","          'Mittelpunkte der Grundflï¿½che
+    pov_p (2)                                   'Mittelpunkte der Deckflï¿½che
+    app "," & ï¿½(.r(1))                          'Radius
     pov_transform
   End With
 End Sub
 
 '****************************************************************************************
 
-Sub povWuerfel_Quader()                         'Ausgabe der Struktur für pov-Szenendatei
+Sub povWuerfel_Quader()                         'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt
-    appCr "// Objekt: " & akto & " " & .bez     'Würfel
-    app .POV & "{": pov_p (1): app ","          'Eckpunkte der Grundfläche (0,0,0)
-    pov_p (2)                                   'Eckpunkte der Deckfläche (1,1,1)
+    appCr "// Objekt: " & akto & " " & .bez     'Wï¿½rfel
+    app .POV & "{": pov_p (1): app ","          'Eckpunkte der Grundflï¿½che (0,0,0)
+    pov_p (2)                                   'Eckpunkte der Deckflï¿½che (1,1,1)
     pov_transform
   End With
 End Sub
 
 '****************************************************************************************
 
-Sub pov_Pyramide()                               'Ausgabe der Struktur für pov-Szenendatei
+Sub pov_Pyramide()                               'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt
     appCr "// Objekt: " & akto & " " & .bez     'Pyramide oder Prisma
                                                 'Trick 17! Prisma als Pyramide getarnt
-    app .POV & "linear_spline 0,1,5,"           'nach oben zulaufend, Höhe 0 bis Höhe 1
-    pov_xyp (1): pov_xyp (2)                    'Grundfläche ist 4 seit. Polygon (+1)
-    pov_xyp (3): pov_xyp (4)                    'Eckpunkte der Grundfläche (0,0) (0,1) ..
-    pov_xyp (1)                                 '1. Eckpunkt der Grundfläche wiederholen!
+    app .POV & "linear_spline 0,1,5,"           'nach oben zulaufend, Hï¿½he 0 bis Hï¿½he 1
+    pov_xyp (1): pov_xyp (2)                    'Grundflï¿½che ist 4 seit. Polygon (+1)
+    pov_xyp (3): pov_xyp (4)                    'Eckpunkte der Grundflï¿½che (0,0) (0,1) ..
+    pov_xyp (1)                                 '1. Eckpunkt der Grundflï¿½che wiederholen!
     pov_scale                                   'die Eckpunkte sind 2 dimensional !
-    app "rotate <" & §(-.rot.y + 180) & "," & §(-.rot.z) & "," & §(.rot.x) & "> "
+    app "rotate <" & ï¿½(-.rot.y + 180) & "," & ï¿½(-.rot.z) & "," & ï¿½(.rot.x) & "> "
     pov_translate                               'die Pyramide muss um 180 Grad gedreht
   End With                                      'werden !!
 End Sub
 '****************************************************************************************
 
-Sub pov_Prisma()                                'Ausgabe der Struktur für pov-Szenendatei
+Sub pov_Prisma()                                'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt
     appCr "// Objekt: " & akto & " " & .bez     'Pyramide oder Prisma
                                                 'Trick 17! Prisma als Pyramide getarnt
-    app .POV & "linear_spline 0,1,4,"           'nach oben zulaufend, Höhe 0 bis Höhe 1
-    pov_xyp (1): pov_xyp (2)                    'Grundfläche ist 4 seit. Polygon (+1)
-    pov_xyp (3)                                 'Eckpunkte der Grundfläche (0,0) (0,1) ..
-    pov_xyp (1)                                 '1. Eckpunkt der Grundfläche wiederholen!
+    app .POV & "linear_spline 0,1,4,"           'nach oben zulaufend, Hï¿½he 0 bis Hï¿½he 1
+    pov_xyp (1): pov_xyp (2)                    'Grundflï¿½che ist 4 seit. Polygon (+1)
+    pov_xyp (3)                                 'Eckpunkte der Grundflï¿½che (0,0) (0,1) ..
+    pov_xyp (1)                                 '1. Eckpunkt der Grundflï¿½che wiederholen!
     pov_transform
   End With                                      'werden !!
 End Sub
 
 '****************************************************************************************
 
-Private Sub pov_Disc()                          'Ausgabe der Struktur für pov-Szenendatei
+Private Sub pov_Disc()                          'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt
     appCr "// Objekt: " & akto & " " & .bez     'Disk
     app .POV & "{": pov_p (1)                   'Mittelpunkt
     app ", <0,1,0>"                             '13.Punkt = Normalvektor
-    app "," & §(.r(1))                          'Radius
-    app "," & §(.r(2))                          'innerer Radius
+    app "," & ï¿½(.r(1))                          'Radius
+    app "," & ï¿½(.r(2))                          'innerer Radius
     pov_transform
   End With
 End Sub
 
 '****************************************************************************************
 
-Private Sub pov_CSG()                           'Ausgabe der Struktur für pov-Szenendatei
+Private Sub pov_CSG()                           'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt CSG ....
-                                                'Einzelfarben oder Gesamtfärbung
+                                                'Einzelfarben oder Gesamtfï¿½rbung
   If .defcol <> vbWhite Or .texi <> 0 Then povColor = False
     appCr "// Objekt: " & akto & " " & .bez & .r(1) & vbCrLf
     app .POV & "{" & vbCrLf                     'CSG-Kommando & {
@@ -370,7 +370,7 @@ Private Sub pov_CSG()                           'Ausgabe der Struktur für pov-Sz
 End Sub
 '****************************************************************************************
 
-Private Sub pov_declare()                       'Ausgabe der Struktur für pov-Szenendatei
+Private Sub pov_declare()                       'Ausgabe der Struktur fï¿½r pov-Szenendatei
 Dim str
 
   With obj(akto)                                'Aktuelles Objekt
@@ -384,17 +384,17 @@ End Sub
 
 '****************************************************************************************
 
-Private Sub pov_CSG_End()                       'Ausgabe der Struktur für pov-Szenendatei
+Private Sub pov_CSG_End()                       'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt
-    .defcol = obj(.r(1)).defcol                 'Werte aus zugehöriger CSG-Anweisung
+    .defcol = obj(.r(1)).defcol                 'Werte aus zugehï¿½riger CSG-Anweisung
     .texi = obj(.r(1)).texi                     'hierher kopieren
     .rot = obj(.r(1)).rot
     .trans = obj(.r(1)).trans
     .scale = obj(.r(1)).scale
     povColor = True
     pov_transform
-    pov_tex                                     'Textur des zugehörigen CSG
+    pov_tex                                     'Textur des zugehï¿½rigen CSG
 '    app "}"                                    'CSG beenden
     appCr "// Objekt: " & akto & " " & .bez & .r(1)
 
@@ -402,14 +402,14 @@ Private Sub pov_CSG_End()                       'Ausgabe der Struktur für pov-Sz
 End Sub
 '****************************************************************************************
 
-Private Sub pov_declare_Ende()                  'Ausgabe der Struktur für pov-Szenendatei
+Private Sub pov_declare_Ende()                  'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt CSG ....
-    .defcol = obj(.r(1)).defcol                 'Werte aus zugehöriger CSG-Anweisung
+    .defcol = obj(.r(1)).defcol                 'Werte aus zugehï¿½riger CSG-Anweisung
     .texi = obj(.r(1)).texi                     'hierher kopieren
     .rot = obj(.r(1)).rot
     .trans = obj(.r(1)).trans
-    .scale = obj(.r(1)).scale                   'Einzelfarben oder Gesamtfärbung
+    .scale = obj(.r(1)).scale                   'Einzelfarben oder Gesamtfï¿½rbung
     appCr "// Objekt: " & akto & " " & .bez & .r(1) & vbCrLf
     app "object { " & .POV                      'object { XY
     povColor = True
@@ -419,7 +419,7 @@ Private Sub pov_declare_Ende()                  'Ausgabe der Struktur für pov-Sz
 End Sub
 '****************************************************************************************
 
-Private Sub pov_new_Object()                    'Ausgabe der Struktur für pov-Szenendatei
+Private Sub pov_new_Object()                    'Ausgabe der Struktur fï¿½r pov-Szenendatei
 
   With obj(akto)                                'Aktuelles Objekt CSG ....
     appCr "// Objekt: " & akto & " " & .bez & vbCrLf
@@ -442,7 +442,7 @@ If objmax > 0 Then                              'Objektarray nicht leer
        Case 1: Call povKugel                    'Sphere-Objekt ausgeben
        Case 2: Call povKegel                    'Kegel
        Case 3: Call povZylinder                 'Zylinder
-       Case 4: Call povWuerfel_Quader           'Würfel
+       Case 4: Call povWuerfel_Quader           'Wï¿½rfel
        Case 5: Call povWuerfel_Quader           'Quader
        Case 6: Call pov_Pyramide                '4 seit. Pyramide
        Case 7: Call pov_Prisma                  '3 seit. Prisma
@@ -450,8 +450,8 @@ If objmax > 0 Then                              'Objektarray nicht leer
        Case -100: Call pov_CSG_End              'CSG-Ende
        Case -104 To -101: Call pov_CSG          'CSG-Beginn
        Case -105: Call pov_declare              '#declare
-       Case -106: Call pov_declare_Ende         'Ende deklarierter Körper
-       Case 200: Call pov_new_Object            'neu deklarierter Körper
+       Case -106: Call pov_declare_Ende         'Ende deklarierter Kï¿½rper
+       Case 200: Call pov_new_Object            'neu deklarierter Kï¿½rper
        Case Else: Debug.Print "POV-Objekt unbekannter Typ:" & .typ, .bez
      End Select
      If .typ > 0 Then pov_tex                   'Textur oder Farbe zuordnen

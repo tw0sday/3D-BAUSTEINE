@@ -1,6 +1,6 @@
 //==========================================================
 
-// 3D-Baukasten Version 1.2 (c) 2002 H.Kleber 
+// 3D-Baukasten Version 1.3 (c) 2002 H.Kleber 
 
 // POV 2 Datei Datum: 19.02.2002 Zeit: 00:47:16
 

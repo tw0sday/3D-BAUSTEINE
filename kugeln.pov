@@ -1,6 +1,6 @@
 //==========================================================
 
-// 3D-Baukasten Version 1.2 (c) 2002 H.Kleber 
+// 3D-Baukasten Version 1.3 (c) 2002 H.Kleber 
 
 // POV 2 Datei Datum: 09.02.2002 Zeit: 16:14:06
 
@@ -66,7 +66,7 @@ sphere{ < 11, 2,-2> , 2 pigment {color Gold } finish {reflection 0.8 }}
 
 sphere{ < 11, 2,-2> , 2 pigment {color Gold } finish {reflection 0.8}}  
 
-// Objekt: 8 Kugel   würfel aus Glas        
+// Objekt: 8 Kugel   wï¿½rfel aus Glas        
 
 box{ < 10, 0,-5> , <12,2,-7> pigment {color White filter 0.01} 
      finish {reflection 0.1 refraction 0.1 ior 1.5 phong 0.8 phong_size 80}}

@@ -1,6 +1,6 @@
 //==========================================================
 
-// 3D-Baukasten Version 1.2 (c) 2002 H.Kleber 
+// 3D-Baukasten Version 1.3 (c) 2002 H.Kleber 
 
 // POV 2 Datei Datum: 17.02.2002 Zeit: 21:19:05
 
@@ -34,7 +34,7 @@ disc{ < 0 , 0 , 0 > , <0,1,0>, 1 , .3333 scale < 3 , 1 , 3 > rotate < 0 , 0 , 0 
 texture {Gold_Metal}}// Objekt: 4 Zylinder       
 
 cylinder{ < 0 , 0 , 0 > , < 0 , 1 , 0 > , 1 scale < 2 , 1 , 2 > rotate < 0 , 0 , 0 > translate < 8 , 0 ,-9 > 
-texture {Polished_Brass}}// Objekt: 5 Würfel         
+texture {Polished_Brass}}// Objekt: 5 Wï¿½rfel         
 
 box{ < 0 , 0 , 0 > , < 1 , 1 ,-1 > scale < 2 , 2 , 2 > rotate < 45 , 0 , 45 > translate < 8 , 1 ,-9 > 
 texture {PinkAlabaster}}// Objekt: 6 Quader         

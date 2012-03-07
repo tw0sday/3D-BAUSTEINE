@@ -1,6 +1,6 @@
 //==========================================================
 
-// 3D-Baukasten Version 1.2 (c) 2002 H.Kleber 
+// 3D-Baukasten Version 1.3 (c) 2002 H.Kleber 
 
 // POV 2 Datei Datum: 18.02.2002 Zeit: 23:29:26
 
@@ -26,7 +26,7 @@ plane {<0,1,0> 0 pigment {checker color White color Black} finish {ambient 0.3}}
 
 
 difference{
-// Objekt: 2 Würfel         
+// Objekt: 2 Wï¿½rfel         
 
 box{ < 0, 0, 0> , < 1, 1,-1> scale < 6, 6, 6> rotate < 0, 0, 0> translate <-2, 0, 7> 
 }
