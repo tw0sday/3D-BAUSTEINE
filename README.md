@@ -1,4 +1,5 @@
 # DAS PROJEKT 3D-Bausteine
+[Diplomarbeit_pdf](https://github.com/tw0sday/3D-BAUSTEINE/releases/download/v1.3.0/Diplomarbeit.pdf)
 
 ## Implementierung eines einfachen 3d-CAD programms
 
