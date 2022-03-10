@@ -131,8 +131,8 @@ Aus softwareergonomischer Sicht sehe ich kaum Probleme der Schüler im Umgang mi
 
 ## Kurzbeschreibung der Benutzeroberfläche
  von 3D-Bausteine-CAD:
+![image](https://user-images.githubusercontent.com/100231011/157618126-db876031-8fae-4944-8839-2743f8b00c20.png)
 
-![](../screenshots%5C3DBAU1_V12inv.jpg)
 
 ###
 
@@ -158,9 +158,7 @@ An der linken Seite ist die Körperauswahl mit ein paar Standardkörpern zu sehe
 ### Die Darstellung der vier Risse
  (Grund-, Auf-, Kreuz-, und Schrägriss)
 
-D
-
-![](../screenshots%5CViews1_4i.bmp)
+![image](https://user-images.githubusercontent.com/100231011/157618307-25c8f5b6-50a3-4631-8fc2-b25b0cb8ed26.png)
 
 er zentrale Bereich besteht aus vier Ansichten der dargestellten geometrischen Szene.
 
@@ -176,9 +174,7 @@ _Abb.: Zugeordnete Normalrisse_
 
 Allerdings entspricht dieses Koordinatensystem nicht dem POV- Koordinatensystem, sodass hier vom Programm eine automatische Umrechnung erfolgen muss. Dies war auch ein Grund für die Entwicklung von „3D-Bausteine&quot;, da es wohl kaum denkbar wäre, im Unterricht zwei komplett verschiedene Koordinatensysteme zu lehren.
 
-_A
-
-![](../screenshots%5CStatusleiste.bmp)
+![image](https://user-images.githubusercontent.com/100231011/157618528-85f58cba-3ba4-4371-8b22-b24a3c7682f6.png)
 
 bb.: Die Koordinatenanzeige mit Statusanzeige_
 
@@ -197,9 +193,7 @@ Mit den rechts unten angeordneten Tasten kann man die drei zugeordneten Normalri
 
 ### Die Steuerzentrale mit Registerblättern
 
-D
-
-![](../screenshots%5CTab_koerp.bmp)
+![image](https://user-images.githubusercontent.com/100231011/157618649-b539f17c-cfa9-4caa-b710-c6f5f6550564.png)
 
 as mit „Eingaben&quot; betitelte Form stellt quasi die Steuerzentrale des Programms dar.
 
@@ -222,17 +216,13 @@ Möglichkeit 1:
 
 f) Dies dürfte die etwas mühsamere Methode gewesen sein.
 
-_M
-
-![](../screenshots%5CForm2_V1.jpg)
+![image](https://user-images.githubusercontent.com/100231011/157618735-ca536a02-ad14-4513-b0c3-0261c7a84fcf.png)
 
 öglichkeit 2:_
 
 _Abb.: Körperauswahl / Objekteingabe_
 
-a
-
-![](../screenshots%5CFarbe.bmp)
+![image](https://user-images.githubusercontent.com/100231011/157618797-7c7b62ba-fd41-4b60-a081-67e3efe0d4d1.png)
 
 ) Man wählt in der Körperleiste (links oben dargestellt)
  einen Körpertyp aus.
@@ -264,7 +254,7 @@ Tipp: stimmt der eingegeben Körper nur in einem Wert nicht, so ist es sinnvoll,
 
 #### F
 
-![](../screenshots%5CFarbdialog.bmp)
+![image](https://user-images.githubusercontent.com/100231011/157618929-dd755aec-b751-4f66-b17a-67e7e10d73de.png)
 
 arbänderung / Textur:
 
@@ -276,9 +266,7 @@ Wird die Schaltfläche „Farbe&quot; , oder die Schaltfläche mit den Farbtuben
 
 Hier kann nun die gewünschte Farbe ausgewählt werden. Mit OK oder Abbrechen kommt man wieder aus dem links abgebildeten Standarddialog.
 
-I
-
-![](../screenshots%5CTextur_Auswahl1.bmp)
+![image](https://user-images.githubusercontent.com/100231011/157619014-51e50788-2042-4d38-a5b0-7fdcc7b58fd7.png)
 
 n der aktuellen Version 1.3 ist auch bereits die Möglichkeit gegeben, die Körper mit ca. 40 Standardtexturen (verschiedenste Metall-,Holz-,Glas- und Steintexturen) zu belegen. Hierzu wird eine Textur aus dem Kombinationslistenfeld ausgewählt, und automatisch dem aktuellen Körper zugeordnet. Im 3D-Bausteine CAD-Programm hat die Wahl einer Textur natürlich keine direkte Auswirkung auf die Darstellung, aber mittels Raytracer erreicht man sehr ansprechende Ausgaben!
 
@@ -294,15 +282,11 @@ Es stehen die logischen Operationen Vereinigung, Differenz, Durchschnitt und Sum
 
 _Abb.: CSG-Beispiel_
 
-B
-
-![](../screenshots%5CCSG_Bsp1.bmp)
+![image](https://user-images.githubusercontent.com/100231011/157619116-341e7f38-327c-43e6-9dc2-9ff6aae2dbe1.png)
 
 sp.: Man möchte ein Werkstück aus Metall darstellen, dass aus einem quaderförmigen Teil durch Herausbohren bzw. –fräsen eines zylindrischen Lochs gefertigt werden soll.
 
-N
-
-![](../screenshots%5CCSG_Auswahl1.bmp)
+![image](https://user-images.githubusercontent.com/100231011/157619222-e1e53b6d-a924-4481-850b-a7c9de06d251.png)
 
 ichts leichter als das – Man bildet die CSG-Differenz (Auswahl aus der Kombinationsliste unter „Geometriedaten&quot;) aus dem Quader und einem Zylinder mit dem Durchmesser des Bohrers. Der Zylinder sollte beim Einfügen auf beiden Seiten des Quaders etwas überstehen, um sicherzustellen, dass das Loch auch wirklich durch den Quader durchgeht.
 
@@ -317,7 +301,7 @@ Wenn man den neuen (CSG-)Körper in der Darstellung mehrmals benötigt ist es vo
 
 Ein wichtiges Ziel des Progamms liegt in der automatischen Generierung einer Exportdatei im POV –Format (Persistance of Vision )
 
-![](../screenshots%5Ctab_Ausg.bmp)
+![image](https://user-images.githubusercontent.com/100231011/157619320-351dfc5e-a60e-44d6-8119-c0cc6de0031e.png)
 
 Diese Exportdatei (Ausgabe.pov) wird vom Programm automatisch erzeugt, und dient als Eingabedatei für den oben genannten Public Domain Raytracer POV.
 
@@ -340,10 +324,7 @@ Es lohnt sich, einen Blick in die POV- Referenz oder in die Online-Dokumentation
 
 #### Werkzeugleiste und Menüleiste
 
-B
-
-![](../screenshots%5Cwerkz1.bmp)
-
+![image](https://user-images.githubusercontent.com/100231011/157619411-f88d9691-c412-4377-b4ee-129c8153e8cb.png)
 
 leibt noch die Werkzeugleiste zu beschreiben. Mit den einzelnen Tasten der Werkzeugleiste können wichtige Abläufe des Systems gestartet werden, ohne sich mühsam durch Menüs hantieren zu müssen. Die Funktionen sind aber auch in den Menüs vorhanden. Für die am häufigsten verwendeten Funktionen des Systems reichen allerdings die Tasten der Werkzeugleiste, und es ist nicht notwendig, die Menüs zu durchsuchen, was die Bedienung wesentlich erleichtert und beschleunigt.
 
