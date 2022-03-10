@@ -176,7 +176,7 @@ Allerdings entspricht dieses Koordinatensystem nicht dem POV- Koordinatensystem,
 
 ![image](https://user-images.githubusercontent.com/100231011/157618528-85f58cba-3ba4-4371-8b22-b24a3c7682f6.png)
 
-bb.: Die Koordinatenanzeige mit Statusanzeige_
+Abb.: Die Koordinatenanzeige mit Statusanzeige_
 
 Unter den 4 Ansichten der Objekte befindet sich standardmäßig ein kleines Steuerelement, dass zu Anzeige der aktuellen Cursorkoordinaten (Maus) im jeweiligen Riss, sowie des aktuellen Zoomfaktors dient. Seit der Version 1.3 ist diese Anzeige um eine Statusanzeige erweitert worden, die dem Benutzer Hilfestellungen gibt.
 
@@ -195,7 +195,7 @@ Mit den rechts unten angeordneten Tasten kann man die drei zugeordneten Normalri
 
 ![image](https://user-images.githubusercontent.com/100231011/157618649-b539f17c-cfa9-4caa-b710-c6f5f6550564.png)
 
-as mit „Eingaben&quot; betitelte Form stellt quasi die Steuerzentrale des Programms dar.
+Das mit „Eingaben&quot; betitelte Form stellt quasi die Steuerzentrale des Programms dar.
 
 Beim Start der Applikation ist standardmäßig das Registerblatt „Köper&quot; obenauf. Die mit Objekte bezeichnete Liste ist vorerst leer, bzw. enthält nur das mit der Nr. 0 bezeichnete Raster, womit das Achsenkreuz und das Punkt- bzw. Linienrasten gemeint ist. Dieses ist vom Benutzer nicht veränderbar.
 
@@ -218,7 +218,7 @@ f) Dies dürfte die etwas mühsamere Methode gewesen sein.
 
 ![image](https://user-images.githubusercontent.com/100231011/157618735-ca536a02-ad14-4513-b0c3-0261c7a84fcf.png)
 
-öglichkeit 2:_
+Möglichkeit 2:_
 
 _Abb.: Körperauswahl / Objekteingabe_
 
@@ -252,11 +252,9 @@ Ist das Ergebnis der Eingabe nicht das Gewünschte, so kann der Körper mit „L
 
 Tipp: stimmt der eingegeben Körper nur in einem Wert nicht, so ist es sinnvoll, den fast richtigen Körper in der Objekte - Liste (object browser) anzuwählen, worauf dessen Werte angegeben werden. Nun ändert man den falschen Wert und drückt auf die „Ändern&quot;-Taste (in der abgebildeten Version noch nicht dargestellt)
 
-#### F
-
 ![image](https://user-images.githubusercontent.com/100231011/157618929-dd755aec-b751-4f66-b17a-67e7e10d73de.png)
 
-arbänderung / Textur:
+#### Farbänderung / Textur:
 
 Wird ein Körper in der Objekt-Liste angewählt, so erscheint dessen Farbe als Hintergrundfarbe der Taste „Farbe&quot; im Form „Farben/Texturen&quot;.
 
@@ -268,7 +266,7 @@ Hier kann nun die gewünschte Farbe ausgewählt werden. Mit OK oder Abbrechen ko
 
 ![image](https://user-images.githubusercontent.com/100231011/157619014-51e50788-2042-4d38-a5b0-7fdcc7b58fd7.png)
 
-n der aktuellen Version 1.3 ist auch bereits die Möglichkeit gegeben, die Körper mit ca. 40 Standardtexturen (verschiedenste Metall-,Holz-,Glas- und Steintexturen) zu belegen. Hierzu wird eine Textur aus dem Kombinationslistenfeld ausgewählt, und automatisch dem aktuellen Körper zugeordnet. Im 3D-Bausteine CAD-Programm hat die Wahl einer Textur natürlich keine direkte Auswirkung auf die Darstellung, aber mittels Raytracer erreicht man sehr ansprechende Ausgaben!
+An der aktuellen Version 1.3 ist auch bereits die Möglichkeit gegeben, die Körper mit ca. 40 Standardtexturen (verschiedenste Metall-,Holz-,Glas- und Steintexturen) zu belegen. Hierzu wird eine Textur aus dem Kombinationslistenfeld ausgewählt, und automatisch dem aktuellen Körper zugeordnet. Im 3D-Bausteine CAD-Programm hat die Wahl einer Textur natürlich keine direkte Auswirkung auf die Darstellung, aber mittels Raytracer erreicht man sehr ansprechende Ausgaben!
 
 _Abb.: Texturauswahl_
 
@@ -284,7 +282,7 @@ _Abb.: CSG-Beispiel_
 
 ![image](https://user-images.githubusercontent.com/100231011/157619116-341e7f38-327c-43e6-9dc2-9ff6aae2dbe1.png)
 
-sp.: Man möchte ein Werkstück aus Metall darstellen, dass aus einem quaderförmigen Teil durch Herausbohren bzw. –fräsen eines zylindrischen Lochs gefertigt werden soll.
+Bsp.: Man möchte ein Werkstück aus Metall darstellen, dass aus einem quaderförmigen Teil durch Herausbohren bzw. –fräsen eines zylindrischen Lochs gefertigt werden soll.
 
 ![image](https://user-images.githubusercontent.com/100231011/157619222-e1e53b6d-a924-4481-850b-a7c9de06d251.png)
 
@@ -326,7 +324,7 @@ Es lohnt sich, einen Blick in die POV- Referenz oder in die Online-Dokumentation
 
 ![image](https://user-images.githubusercontent.com/100231011/157619411-f88d9691-c412-4377-b4ee-129c8153e8cb.png)
 
-leibt noch die Werkzeugleiste zu beschreiben. Mit den einzelnen Tasten der Werkzeugleiste können wichtige Abläufe des Systems gestartet werden, ohne sich mühsam durch Menüs hantieren zu müssen. Die Funktionen sind aber auch in den Menüs vorhanden. Für die am häufigsten verwendeten Funktionen des Systems reichen allerdings die Tasten der Werkzeugleiste, und es ist nicht notwendig, die Menüs zu durchsuchen, was die Bedienung wesentlich erleichtert und beschleunigt.
+Bleibt noch die Werkzeugleiste zu beschreiben. Mit den einzelnen Tasten der Werkzeugleiste können wichtige Abläufe des Systems gestartet werden, ohne sich mühsam durch Menüs hantieren zu müssen. Die Funktionen sind aber auch in den Menüs vorhanden. Für die am häufigsten verwendeten Funktionen des Systems reichen allerdings die Tasten der Werkzeugleiste, und es ist nicht notwendig, die Menüs zu durchsuchen, was die Bedienung wesentlich erleichtert und beschleunigt.
 
 _Abb.: Werkzeugleiste_
 
